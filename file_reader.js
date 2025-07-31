@@ -21,12 +21,16 @@ fs.readFile('./firstname.txt','utf-8').then(firstFile =>{
 // ASYNC/AWAIT SOLUTION BELOW THIS LINE
 
 async function fileReader(){
+    try{
     const firstname = await fs.readFile('./firstname.txt','utf-8')
     const lastname = await fs.readFile('./lastname.txt','utf-8')
     const age = await fs.readFile('./age.txt','utf-8')
     const hobbies = JSON.parse(await fs.readFile('./hobbies.txt','utf-8'))
 
     console.log(`${firstname} ${lastname} is ${age} years old and his hobbies are ${hobbies[0]} and ${hobbies[1]}`)
+    }catch(err){
+        console.log(err)
+    }
 }
 
 fileReader()
